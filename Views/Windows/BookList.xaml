@@ -1,0 +1,42 @@
+﻿<Window x:Class="BookShopApplication.Views.Windows.BookList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookShopApplication.Views.Windows"
+        xmlns:userControls="clr-namespace:BookShopApplication.Views.UserControls"
+        xmlns:Diagnostics="clr-namespace:System.Diagnostics;assembly=System.Diagnostics.DiagnosticSource" x:Name="Window"
+        mc:Ignorable="d"
+        Title="فروشگاه کتاب - کتاب ها" Height="744" Width="1107"
+        Icon="../../Resources/favicon.png" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="SingleBorderWindow">
+    <Grid FlowDirection="RightToLeft" Background="#eff3f6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <userControls:Menu />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <userControls:PanelMenu Grid.Row="0" />
+            <Grid Grid.Column="1" Margin="25,0,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <TextBlock Text="کتاب ها" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Shabnam" FontWeight="Bold" FontSize="27" Margin="0,3,0,0" />
+                    <userControls:BodyButton IconSource="../../Resources/add.png" Text="افزودن کتاب جدید"  Width="auto" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,3,0,0" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <userControls:ContentTabControl />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
