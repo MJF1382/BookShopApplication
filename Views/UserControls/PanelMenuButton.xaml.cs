@@ -1,4 +1,4 @@
-﻿using BookShopApplication.Extensions;
+﻿using BookShopApplication.Helpers.Extensions;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -36,7 +36,7 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 contentColor = value;
-                txbText.Foreground = new BrushConverter().ConvertFrom(contentColor) as Brush; ;
+                txbText.Foreground = new BrushConverter().ConvertFrom(contentColor) as Brush;
             }
         }
 
