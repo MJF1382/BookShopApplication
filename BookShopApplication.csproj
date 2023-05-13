@@ -1,23 +1,68 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<ApplicationIcon>Resources\favicon.ico</ApplicationIcon>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.16" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.16" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.16">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+	<ItemGroup>
+	  <None Remove="favicon.png" />
+	  <None Remove="Resources\add.png" />
+	  <None Remove="Resources\bars.png" />
+	  <None Remove="Resources\cross-close.png" />
+	  <None Remove="Resources\cross.png" />
+	  <None Remove="Resources\delete.png" />
+	  <None Remove="Resources\edit.png" />
+	  <None Remove="Resources\menu-bookslist.png" />
+	  <None Remove="Resources\menu-categorieslist.png" />
+	  <None Remove="Resources\menu-customers.png" />
+	  <None Remove="Resources\menu-orders.png" />
+	  <None Remove="Resources\notification.png" />
+	  <None Remove="Resources\settings.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DataBase\" />
-  </ItemGroup>
+	<ItemGroup>
+	  <Resource Include="Resources\add.png" />
+	  <Resource Include="Resources\bars.png" />
+	  <Resource Include="Resources\cross-close.png" />
+	  <Resource Include="Resources\cross.png" />
+	  <Resource Include="Resources\delete.png" />
+	  <Resource Include="Resources\edit.png" />
+	  <Resource Include="Resources\favicon.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.16" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.16" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.16" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.16">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="DataBase\" />
+		<Folder Include="Helpers\Classes\" />
+		<Folder Include="Resources\Fonts\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Resources\favicon.png" />
+		<Resource Include="Resources\Fonts\Shabnam\Shabnam.ttf" />
+		<Resource Include="Resources\Fonts\Shabnam\Shabnam-Bold.ttf" />
+		<Resource Include="Resources\Fonts\Shabnam\Shabnam-Light.ttf" />
+		<Resource Include="Resources\Fonts\Shabnam\Shabnam-Medium.ttf" />
+		<Resource Include="Resources\Fonts\Shabnam\Shabnam-Thin.ttf" />
+		<Resource Include="Resources\menu-bookslist.png" />
+		<Resource Include="Resources\menu-categorieslist.png" />
+		<Resource Include="Resources\menu-customers.png" />
+		<Resource Include="Resources\menu-orders.png" />
+		<Resource Include="Resources\notification.png" />
+		<Resource Include="Resources\settings.png" />
+	</ItemGroup>
 
 </Project>
