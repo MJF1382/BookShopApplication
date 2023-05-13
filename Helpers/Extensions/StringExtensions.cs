@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookShopApplication.Extensions
+namespace BookShopApplication.Helpers.Extensions
 {
     public static class StringExtensions
     {
