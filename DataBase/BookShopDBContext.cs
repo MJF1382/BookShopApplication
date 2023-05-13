@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace BookShopApplication.Database
+namespace BookShopApplication.DataBase
 {
     public partial class BookShopDBContext : DbContext
     {
@@ -20,7 +20,7 @@ namespace BookShopApplication.Database
         public virtual DbSet<Category> Categories { get; set; } = null!;
         public virtual DbSet<Customer> Customers { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
-        public virtual DbSet<OrderItem> OrderItems { get; set; } = null!;
+        public virtual DbSet<OrderBook> OrderBooks { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -70,7 +70,7 @@ namespace BookShopApplication.Database
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.FisrtName).HasMaxLength(20);
+                entity.Property(e => e.FirstName).HasMaxLength(20);
 
                 entity.Property(e => e.LastName).HasMaxLength(20);
 
@@ -94,7 +94,7 @@ namespace BookShopApplication.Database
                     .HasConstraintName("FK_Orders_Customers");
             });
 
-            modelBuilder.Entity<OrderItem>(entity =>
+            modelBuilder.Entity<OrderBook>(entity =>
             {
                 entity.HasKey(e => new { e.OrderId, e.BookIsbn })
                     .HasName("PK_OrderItem");
@@ -106,13 +106,13 @@ namespace BookShopApplication.Database
                     .HasColumnName("BookISBN");
 
                 entity.HasOne(d => d.BookIsbnNavigation)
-                    .WithMany(p => p.OrderItems)
+                    .WithMany(p => p.OrderBooks)
                     .HasForeignKey(d => d.BookIsbn)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_OrderItems_Books");
 
                 entity.HasOne(d => d.Order)
-                    .WithMany(p => p.OrderItems)
+                    .WithMany(p => p.OrderBooks)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_OrderItems_Orders");

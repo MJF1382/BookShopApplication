@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BookShopApplication.Database
+namespace BookShopApplication.DataBase
 {
     public partial class Order
     {
         public Order()
         {
-            OrderItems = new HashSet<OrderItem>();
+            OrderBooks = new HashSet<OrderBook>();
         }
 
         public int Id { get; set; }
@@ -16,6 +16,6 @@ namespace BookShopApplication.Database
         public DateTime BuyDate { get; set; }
 
         public virtual Customer Customer { get; set; } = null!;
-        public virtual ICollection<OrderItem> OrderItems { get; set; }
+        public virtual ICollection<OrderBook> OrderBooks { get; set; }
     }
 }

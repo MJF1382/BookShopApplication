@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BookShopApplication.Database
+namespace BookShopApplication.DataBase
 {
     public partial class Category
     {

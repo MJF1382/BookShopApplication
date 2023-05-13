@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BookShopApplication.Database
+namespace BookShopApplication.DataBase
 {
     public partial class Customer
     {
@@ -11,7 +11,7 @@ namespace BookShopApplication.Database
         }
 
         public int Id { get; set; }
-        public string FisrtName { get; set; } = null!;
+        public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
 
