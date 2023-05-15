@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BookShopApplication.Views.UserControls"
+             xmlns:model="clr-namespace:BookShopApplication.Model"
              mc:Ignorable="d" d:DesignWidth="800" Height="auto" d:Background="#eff3f6" FontFamily="Shabnam">
     <UserControl.Resources>
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
@@ -53,7 +54,10 @@
         </Style>
     </UserControl.Resources>
     <Grid FlowDirection="RightToLeft">
-        <TextBlock Text="50 کتاب" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#3d3e40" />
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Name="txbCount" Text="{Binding Source={x:Static model:DataAccess.Count}}" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#3d3e40" />
+            <TextBlock Text="کتاب" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#3d3e40" Margin="5,0,0,0" />
+        </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
             <Label Content="فیلتر بر اساس" FontWeight="Bold" Foreground="#515457" Margin="0,0,10,0" />
             <TextBox Width="200" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" />

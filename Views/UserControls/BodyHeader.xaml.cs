@@ -1,5 +1,8 @@
-﻿using System;
+﻿using BookShopApplication.DataBase;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +18,6 @@ using System.Windows.Shapes;
 
 namespace BookShopApplication.Views.UserControls
 {
-    /// <summary>
-    /// Interaction logic for BodyHeader.xaml
-    /// </summary>
     public partial class BodyHeader : UserControl
     {
         public BodyHeader()
