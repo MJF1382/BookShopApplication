@@ -4,31 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookShopApplication.Views.Windows"
+        xmlns:userControls="clr-namespace:BookShopApplication.Views.UserControls"
         mc:Ignorable="d"
         Title="DeleteModal" Height="300" Width="300" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" WindowStyle="None"
-        FlowDirection="RightToLeft" FontFamily="Shabnam" Background="Transparent">
-    <Window.Resources>
-        <ControlTemplate x:Key="Main" TargetType="{x:Type ButtonBase}">
-            <Border x:Name="border" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" SnapsToDevicePixels="true">
-                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="Button.IsDefaulted" Value="true">
-                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter Property="Opacity" TargetName="border" Value="0.6"/>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="true">
-
-                </Trigger>
-                <Trigger Property="IsEnabled" Value="false">
-
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-    </Window.Resources>
-    <Border BorderThickness="0" Background="White" CornerRadius="10">
+        FlowDirection="RightToLeft" FontFamily="Shabnam" Background="Transparent" AllowsTransparency="True">
+    <Border Name="main" BorderThickness="0" Background="White" CornerRadius="10">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
@@ -38,7 +18,7 @@
                 <RowDefinition Height="75" />
             </Grid.RowDefinitions>
 
-            <Button Template="{DynamicResource Main}" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Width="20" Height="20" Margin="13,7,0,0" Click="Button_Click" Cursor="Hand">
+            <Button Template="{DynamicResource closebutton}" HorizontalAlignment="Left" Margin="13,7,0,0" Click="Close_Click">
                 <Image Grid.Row="0" Source="/Resources/cross-close.png"  />
             </Button>
             <Image Grid.Row="1" Source="/Resources/cross.png" />
@@ -49,10 +29,8 @@
                    Foreground="#878484" FontSize="12" Margin="0,8,0,0"
                    VerticalAlignment="Top" HorizontalAlignment="Center"/>
             <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
-                <Button Template="{DynamicResource Main}" Content="حذف" Width="100" Height="35"
-                        Margin="0,0,10,0" Background="#f15e5e" Foreground="White" FontWeight="Bold" Cursor="Hand" Click="Button_Click_1" />
-                <Button Template="{DynamicResource Main}" Content="لغو" Width="100" Height="35"
-                        Background="#c1c1c1" Foreground="White" FontWeight="Bold" Cursor="Hand" Click="Button_Click" />
+                <userControls:FormButton OnButtonClick="Button_Click_1" Text="حذف" ButtonWidth="100" ButtonHeight="35" ButtonBackground="#f15e5e" ButtonForeground="White" Margin="0,0,10,0" />
+                <userControls:FormButton OnButtonClick="Close_Click" Text="لغو" ButtonWidth="100" ButtonHeight="35" ButtonBackground="#c1c1c1" ButtonForeground="White" />
             </StackPanel>
         </Grid>
     </Border>
