@@ -39,6 +39,16 @@ namespace BookShopApplication.Views.UserControls
             }
         }
 
+        private RoutedEventHandler onButtonClick;
+        public RoutedEventHandler OnButtonClick
+        {
+            get { return onButtonClick; }
+            set
+            {
+                onButtonClick = value;
+                btn.Click += onButtonClick;
+            }
+        }
 
         public BodyButton()
         {

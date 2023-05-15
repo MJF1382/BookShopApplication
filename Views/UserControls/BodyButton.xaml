@@ -65,7 +65,7 @@
         </Style>
     </UserControl.Resources>
     <Grid FlowDirection="RightToLeft">
-        <Button Style="{DynamicResource Button}" Background="#674ed7" BorderThickness="0" Cursor="Hand" Width="auto" Height="35">
+        <Button Name="btn" Style="{DynamicResource Button}" Background="#674ed7" BorderThickness="0" Cursor="Hand" Width="auto" Height="35" Command="{Binding OnButtonClick}">
             <StackPanel Orientation="Horizontal" Width="auto" Height="35">
                 <Image Name="imgIcon" Source="{Binding IconSource}" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="8,0,0,0" />
                 <TextBlock Name="txbText" Text="{Binding Text}" Foreground="#e7dcfc" FontFamily="Shabnam" VerticalAlignment="Center" Margin="7,0,10,0" FontSize="12" />
