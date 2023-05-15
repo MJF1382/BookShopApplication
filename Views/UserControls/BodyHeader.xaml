@@ -55,7 +55,7 @@
     </UserControl.Resources>
     <Grid FlowDirection="RightToLeft">
         <StackPanel Orientation="Horizontal">
-            <TextBlock Name="txbCount" Text="{Binding Source={x:Static model:DataAccess.Count}}" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#3d3e40" />
+            <TextBlock Name="txbCount" Text="{Binding Source={x:Static model:DataAccess.Books}, Path=Count}" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#3d3e40" />
             <TextBlock Text="کتاب" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#3d3e40" Margin="5,0,0,0" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
