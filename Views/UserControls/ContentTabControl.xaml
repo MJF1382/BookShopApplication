@@ -113,7 +113,7 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0" Margin="0,35,0,0">
-                            <local:BodyHeader />
+                            <local:BodyHeader x:Name="header" />
                         </Grid>
                         <Grid Grid.Row="1" Margin="0,20,0,0">
                             <local:BodyContent />

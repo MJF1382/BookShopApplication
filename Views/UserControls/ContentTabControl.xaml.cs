@@ -2,6 +2,7 @@
 using BookShopApplication.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,8 @@ namespace BookShopApplication.Views.UserControls
 {
     public partial class ContentTabControl : UserControl
     {
+        BookShopDBContext _context = new BookShopDBContext();
+
         public ContentTabControl()
         {
             InitializeComponent();
