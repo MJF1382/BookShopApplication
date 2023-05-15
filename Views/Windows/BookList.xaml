@@ -31,7 +31,7 @@
 
                 <Grid Grid.Row="0">
                     <TextBlock Text="کتاب ها" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Shabnam" FontWeight="Bold" FontSize="27" Margin="0,3,0,0" />
-                    <userControls:BodyButton IconSource="../../Resources/add.png" Text="افزودن کتاب جدید"  Width="auto" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,3,0,0" />
+                    <userControls:BodyButton IconSource="../../Resources/add.png" Text="افزودن کتاب جدید" OnButtonClick="btnAddBook_Click"  Width="auto" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,3,0,0" />
                 </Grid>
                 <Grid Grid.Row="1">
                     <userControls:ContentTabControl />
