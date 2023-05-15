@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:model="clr-namespace:BookShopApplication.Model"
              xmlns:local="clr-namespace:BookShopApplication.Views.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1000" d:Background="#eff3f6" FontFamily="Shabnam" d:FlowDirection="RightToLeft"
@@ -35,7 +36,7 @@
             <Setter Property="FontSize" Value="14" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Height" Value="45" />
-            <Setter Property="Foreground" Value="#222528" />
+            <!--<Setter Property="Foreground" Value="#222528" />-->
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Template">
                 <Setter.Value>
@@ -54,7 +55,7 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <DataGrid Name="dgBooks" ItemsSource="{Binding Books}"
+        <DataGrid Name="dgBooks" ItemsSource="{Binding Source={x:Static model:DataAccess.Books}}"
                   CanUserAddRows="False" CanUserDeleteRows="False"
                   CanUserResizeColumns="False" CanUserResizeRows="False"
                   AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
