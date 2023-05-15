@@ -10,6 +10,7 @@
 
 	<ItemGroup>
 	  <None Remove="favicon.png" />
+	  <None Remove="Resources\add-book.png" />
 	  <None Remove="Resources\add.png" />
 	  <None Remove="Resources\bars.png" />
 	  <None Remove="Resources\cross-close.png" />
@@ -22,6 +23,11 @@
 	  <None Remove="Resources\menu-orders.png" />
 	  <None Remove="Resources\notification.png" />
 	  <None Remove="Resources\settings.png" />
+	  <None Remove="Resources\success.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Resources\add-book.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -63,6 +69,20 @@
 		<Resource Include="Resources\menu-orders.png" />
 		<Resource Include="Resources\notification.png" />
 		<Resource Include="Resources\settings.png" />
+		<Resource Include="Resources\success.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\Windows\SuccessMessageModal.xaml.cs">
+	    <SubType>Code</SubType>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Update="Views\Windows\SuccessMessageModal.xaml">
+	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+	    <SubType>Designer</SubType>
+	  </Page>
 	</ItemGroup>
 
 </Project>

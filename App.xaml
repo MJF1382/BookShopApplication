@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BookShopApplication"
              StartupUri="Views/Windows/BookList.xaml">
+             <!--StartupUri="Views/Windows/SuccessMessageModal.xaml">-->
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Views/Styles/FullRoundedButton.xaml" />
+                <ResourceDictionary Source="/Views/Styles/FullRoundedButtonStyle.xaml" />
+                <ResourceDictionary Source="/Views/Styles/CloseButtonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
