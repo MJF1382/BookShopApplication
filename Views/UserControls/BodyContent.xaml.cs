@@ -3,6 +3,7 @@ using BookShopApplication.ViewModels;
 using BookShopApplication.Views.Windows;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +53,11 @@ namespace BookShopApplication.Views.UserControls
 
             App.Current.MainWindow.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
             App.Current.MainWindow.Opacity = 1;
+        }
+
+        private void dgBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dgBooks.UnselectAllCells();
         }
     }
 }

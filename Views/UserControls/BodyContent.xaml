@@ -50,6 +50,7 @@
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True">
                     <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="#222528" />
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -60,7 +61,7 @@
                   CanUserResizeColumns="False" CanUserResizeRows="False"
                   AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True"
                   BorderThickness="0" Background="Transparent" HeadersVisibility="Column"
-                  GridLinesVisibility="None" ColumnWidth="*">
+                  GridLinesVisibility="None" ColumnWidth="*" SelectionChanged="dgBooks_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="10" />
                 <DataGridTextColumn Header="شابک" Binding="{Binding Isbn}" FontFamily="Signika Negative" CanUserReorder="False" />
