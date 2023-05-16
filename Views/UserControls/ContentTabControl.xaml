@@ -24,9 +24,17 @@
                                     </Style.Triggers>
                                 </Style>
                             </StackPanel.Resources>
-                            <TextBlock Text="{TemplateBinding Header}" FontSize="13" FontWeight="Bold" Padding="7,10,7,10" />
-                            <Border BorderThickness="1" BorderBrush="#9280e0" />
+                            <TextBlock Text="{TemplateBinding Header}" FontSize="13" FontWeight="Bold" Padding="9,10,9,10" />
+                            <Border Name="mainBorder" Background="red" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" />
                         </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="BorderBrush" TargetName="mainBorder" Value="#9280e0" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter Property="BorderBrush" TargetName="mainBorder" Value="transparent" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -104,7 +112,7 @@
     <Grid FlowDirection="RightToLeft">
         <TabControl FontFamily="Shabnam" BorderThickness="0" Visibility="Visible" Background="Transparent">
             <TabControl.Items>
-                <TabItem Header="کل کتاب ها">
+                <TabItem Name="allBooks" Header="کل کتاب ها" Selector.Selected="tabItem_Selected">
                     <Grid Margin="0,0,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -113,16 +121,43 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0" Margin="0,35,0,0">
-                            <local:BodyHeader x:Name="header" />
+                            <local:BodyHeader x:Name="header0" />
                         </Grid>
                         <Grid Grid.Row="1" Margin="0,20,0,0">
                             <local:BodyContent />
                         </Grid>
                     </Grid>
                 </TabItem>
-                <TabItem Header="کتاب های فروخته شده">
-                    <Grid Background="DarkGreen" Margin="0,30,0,0">
+                <TabItem Name="soldBooks" Header="کتاب های فروخته شده" Selector.Selected="tabItem_Selected">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
 
+                        <Grid Grid.Row="0" Margin="0,35,0,0">
+                            <local:BodyHeader x:Name="header1" />
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="0,20,0,0">
+                            <local:BodyContent />
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <TabItem Name="unsoldBooks" Header="کتاب های فروخته نشده" Selector.Selected="tabItem_Selected">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Margin="0,35,0,0">
+                            <local:BodyHeader x:Name="header2" />
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="0,20,0,0">
+                            <local:BodyContent />
+                        </Grid>
                     </Grid>
                 </TabItem>
             </TabControl.Items>
