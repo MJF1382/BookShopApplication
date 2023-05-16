@@ -20,9 +20,8 @@ namespace BookShopApplication.Views.Windows
 {
     public partial class DeleteModal : Window
     {
-        private object _identifier;
-        private EntityType _entityType;
-        private BookShopDBContext _context = new BookShopDBContext();
+        object _identifier;
+        EntityType _entityType;
 
         public DeleteModal(Window owner, object identifier, EntityType entityType)
         {
@@ -43,12 +42,14 @@ namespace BookShopApplication.Views.Windows
             switch (_entityType)
             {
                 case EntityType.Book:
-                    Book book = _context.Books.Find(_identifier);
-                    _context.Books.Remove(book);
-                    bool result = Convert.ToBoolean(_context.SaveChanges());
+                    Book book = Model.DataAccess.Context.Books.Find(_identifier);
+                    Model.DataAccess.Context.Books.Remove(book);
+                    bool result = Convert.ToBoolean(Model.DataAccess.Context.SaveChanges());
 
                     if (result)
                     {
+                        Model.DataAccess.UpdateContext();
+
                         BookViewModel modelBook = Model.DataAccess.Books.Single(p => p.Isbn == book.Isbn);
 
                         bool res = Model.DataAccess.Books.Remove(modelBook);

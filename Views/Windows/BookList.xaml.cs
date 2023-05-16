@@ -9,8 +9,6 @@ namespace BookShopApplication.Views.Windows
 {
     public partial class BookList : Window
     {
-        DataBase.BookShopDBContext _context = new DataBase.BookShopDBContext();
-
         public BookList()
         {
             InitializeComponent();
@@ -32,8 +30,8 @@ namespace BookShopApplication.Views.Windows
 
         private void Feed()
         {
-            List<BookViewModel> books = (from book in _context.Books
-                                         join category in _context.Categories on book.CategoryId equals category.Id
+            List<BookViewModel> books = (from book in Model.DataAccess.Context.Books
+                                         join category in Model.DataAccess.Context.Categories on book.CategoryId equals category.Id
                                          select new BookViewModel()
                                          {
                                              Isbn = book.Isbn,
