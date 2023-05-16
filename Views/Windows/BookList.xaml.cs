@@ -4,6 +4,9 @@ using System.Windows.Media;
 using System.Linq;
 using BookShopApplication.ViewModels;
 using System.Collections.Generic;
+using System;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace BookShopApplication.Views.Windows
 {
@@ -12,8 +15,6 @@ namespace BookShopApplication.Views.Windows
         public BookList()
         {
             InitializeComponent();
-
-            Feed();
         }
 
         private void btnAddBook_Click(object sender, RoutedEventArgs e)
@@ -26,24 +27,6 @@ namespace BookShopApplication.Views.Windows
 
             App.Current.MainWindow.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
             App.Current.MainWindow.Opacity = 1;
-        }
-
-        private void Feed()
-        {
-            List<BookViewModel> books = (from book in Model.DataAccess.Context.Books
-                                         join category in Model.DataAccess.Context.Categories on book.CategoryId equals category.Id
-                                         select new BookViewModel()
-                                         {
-                                             Isbn = book.Isbn,
-                                             Title = book.Title,
-                                             CategoryName = category.Name,
-                                             Price = book.Price
-                                         }).ToList();
-
-            foreach (BookViewModel book in books)
-            {
-                Model.DataAccess.Books.Add(book);
-            }
         }
     }
 }
