@@ -1,12 +1,16 @@
 ﻿using BookShopApplication.Helpers.Extensions;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace BookShopApplication.Views.UserControls
 {
-    public partial class PanelMenuButton : UserControl
+    public partial class PanelMenuButton : UserControl, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         private string text;
         public string Text
         {
@@ -14,7 +18,7 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 text = value;
-                txbText.Text = text;
+                OnPropertyChanged();
             }
         }
 
@@ -25,7 +29,7 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 iconSource = value;
-                imgIcon.Source = new BitmapImage(new System.Uri(iconSource, System.UriKind.Relative));
+                OnPropertyChanged();
             }
         }
 
@@ -36,7 +40,7 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 contentColor = value;
-                txbText.Foreground = new BrushConverter().ConvertFrom(contentColor) as Brush;
+                OnPropertyChanged();
             }
         }
 
@@ -47,7 +51,7 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 contentSize = value;
-                txbText.FontSize = contentSize;
+                OnPropertyChanged();
             }
         }
 
@@ -67,7 +71,7 @@ namespace BookShopApplication.Views.UserControls
                 }
 
                 buttonBackground = value;
-                btn.Background = new BrushConverter().ConvertFrom(buttonBackground) as Brush; ;
+                OnPropertyChanged();
             }
         }
 
@@ -78,8 +82,7 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 buttonWidth = value;
-                btn.Width = buttonWidth;
-                stackPanel.Width = buttonWidth;
+                OnPropertyChanged();
             }
         }
 
@@ -90,14 +93,19 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 buttonHeight = value;
-                btn.Height = buttonHeight;
-                stackPanel.Height = buttonHeight;
+                OnPropertyChanged();
             }
         }
 
         public PanelMenuButton()
         {
+            DataContext = this;
             InitializeComponent();
+        }
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

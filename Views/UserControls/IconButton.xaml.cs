@@ -1,12 +1,16 @@
-﻿using System.Windows.Controls;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using BookShopApplication.Helpers.Extensions;
 
 namespace BookShopApplication.Views.UserControls
 {
-    public partial class IconButton : UserControl
+    public partial class IconButton : UserControl, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         private string source;
         public string Source
         {
@@ -14,7 +18,7 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 source = value;
-                imgIcon.Source = new BitmapImage(new System.Uri(source, System.UriKind.Relative));
+                OnPropertyChanged();
             }
         }
 
@@ -25,7 +29,7 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 iconWidth = value;
-                imgIcon.Width = iconWidth;
+                OnPropertyChanged();
             }
         }
 
@@ -36,7 +40,7 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 iconHeight = value;
-                imgIcon.Height = iconHeight;
+                OnPropertyChanged();
             }
         }
 
@@ -55,7 +59,7 @@ namespace BookShopApplication.Views.UserControls
                     buttonBackground = "#00FFFFFF";
                 }
 
-                btnIcon.Background = new BrushConverter().ConvertFrom(buttonBackground) as Brush;
+                OnPropertyChanged();
             }
         }
 
@@ -66,7 +70,7 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 buttonWidth = value;
-                btnIcon.Width = buttonWidth;
+                OnPropertyChanged();
             }
         }
 
@@ -77,13 +81,19 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 buttonHeight = value;
-                btnIcon.Height = buttonHeight;
+                OnPropertyChanged();
             }
         }
 
         public IconButton()
         {
+            DataContext = this;
             InitializeComponent();
+        }
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

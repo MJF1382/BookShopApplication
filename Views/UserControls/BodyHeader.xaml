@@ -60,7 +60,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
             <Label Content="فیلتر بر اساس" FontWeight="Bold" Foreground="#515457" Margin="0,0,10,0" />
-            <TextBox Width="200" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" />
+            <TextBox Name="txtSearch" Width="200" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" TextChanged="txtSearch_TextChanged" />
         </StackPanel>
     </Grid>
 </UserControl>

@@ -20,8 +20,6 @@ namespace BookShopApplication.Views.UserControls
 {
     public partial class ContentTabControl : UserControl
     {
-        BookShopDBContext _context = new BookShopDBContext();
-
         public ContentTabControl()
         {
             InitializeComponent();

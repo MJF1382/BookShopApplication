@@ -32,7 +32,10 @@
                                 <Setter Property="Opacity" TargetName="border" Value="0.56"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
-                                
+
+                            </Trigger>
+                            <Trigger Property="IsReadOnly" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="#e8e8e8" />
                             </Trigger>
                             <Trigger Property="IsKeyboardFocused" Value="true">
                                 <Setter Property="BorderBrush" TargetName="border" Value="#9e8af2"/>
@@ -60,6 +63,6 @@
 
         <Label Name="lbl" Grid.Row="0" FontSize="13" Content="{Binding LabelText}" Padding="0" FontFamily="Shabnam" FontWeight="Bold" VerticalAlignment="Top" />
         <TextBlock Name="txbPlaceholder" Grid.Row="1" Text="{Binding LabelText}" FontSize="14" FontFamily="Shabnam" VerticalAlignment="Center" Padding="10,0,7,0" Foreground="#d5d5d5" />
-        <TextBox Name="txt" Grid.Row="1" Text="{Binding Data}" BorderThickness="2" Background="Transparent" BorderBrush="#dadde3" VerticalContentAlignment="Center" Padding="7,0,7,0" FontSize="14" FontFamily="{Binding FontName}" TextChanged="txt_TextChanged" />
+        <TextBox Name="txt" Grid.Row="1" Text="{Binding Data}" IsReadOnly="{Binding ReadOnly}" BorderThickness="2" Background="Transparent" BorderBrush="#dadde3" VerticalContentAlignment="Center" Padding="7,0,7,0" FontSize="14" FontFamily="{Binding FontName}" TextChanged="txt_TextChanged" />
     </Grid>
 </UserControl>

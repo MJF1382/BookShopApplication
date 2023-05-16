@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,8 +19,10 @@ using System.Windows.Shapes;
 
 namespace BookShopApplication.Views.UserControls
 {
-    public partial class FormComboBox : UserControl
+    public partial class FormComboBox : UserControl, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         private string labelText;
         public string LabelText
         {
@@ -26,8 +30,7 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 labelText = value;
-                lbl.Content = labelText;
-                txbPlaceholder.Text = labelText.Replace("*", "");
+                OnPropertyChanged();
             }
         }
 
@@ -38,7 +41,7 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 fontName = value;
-                cmb.FontFamily = new FontFamily(fontName);
+                OnPropertyChanged();
             }
         }
 
@@ -49,25 +52,30 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 items = value;
-                cmb.ItemsSource = items;
+                OnPropertyChanged();
             }
         }
 
         private string data;
         public string Data
         {
-            get { return cmb.SelectedValue.ToString(); }
+            get { return data; }
             set
             {
                 data = value;
-                cmb.SelectedItem = data;
+                OnPropertyChanged();
             }
         }
 
-
         public FormComboBox()
         {
+            DataContext = this;
             InitializeComponent();
+        }
+
+        private void OnPropertyChanged([CallerMemberName]string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

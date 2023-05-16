@@ -20,8 +20,6 @@ namespace BookShopApplication.Views.UserControls
 {
     public partial class BodyContent : UserControl
     {
-        BookShopDBContext _context = new BookShopDBContext();
-
         public BodyContent()
         {
             InitializeComponent();
@@ -30,7 +28,7 @@ namespace BookShopApplication.Views.UserControls
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             string isbn = Convert.ToString(((Button)sender).CommandParameter);
-            Book book = _context.Books.Find(isbn);
+            Book book = Model.DataAccess.Context.Books.Find(isbn);
 
             App.Current.MainWindow.Background = new SolidColorBrush(Color.FromRgb(0, 0, 0));
             App.Current.MainWindow.Opacity = 0.25;
@@ -50,7 +48,7 @@ namespace BookShopApplication.Views.UserControls
             App.Current.MainWindow.Opacity = 0.25;
 
             DeleteModal deleteModal = new DeleteModal(App.Current.MainWindow, isbn, Helpers.Enums.EntityType.Book);
-            bool? result = deleteModal.ShowDialog();
+            deleteModal.ShowDialog();
 
             App.Current.MainWindow.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
             App.Current.MainWindow.Opacity = 1;

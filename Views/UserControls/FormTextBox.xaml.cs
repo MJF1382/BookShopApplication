@@ -1,7 +1,9 @@
 ﻿using BookShopApplication.Helpers.Extensions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,8 +18,10 @@ using System.Windows.Shapes;
 
 namespace BookShopApplication.Views.UserControls
 {
-    public partial class FormTextBox : UserControl
+    public partial class FormTextBox : UserControl, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         private string labelText;
         public string LabelText
         {
@@ -25,8 +29,7 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 labelText = value;
-                lbl.Content = labelText;
-                txbPlaceholder.Text = labelText.Replace("*", "");
+                OnPropertyChanged();
             }
         }
 
@@ -37,23 +40,52 @@ namespace BookShopApplication.Views.UserControls
             set
             {
                 fontName = value;
-                txt.FontFamily = new FontFamily(fontName);
+                OnPropertyChanged();
             }
         }
 
         private string data;
         public string Data
         {
-            get { return txt.Text; }
+            get { return data; }
             set
             {
-                data = value;
-                txt.Text = data;
+                if (value.HasValue())
+                {
+                    data = value;
+                }
+                else
+                {
+                    txt.IsReadOnly = true;
+                }
+
+                OnPropertyChanged();
             }
         }
 
+        private bool? readOnly;
+        public bool? ReadOnly
+        {
+            get { return readOnly; }
+            set
+            {
+                if (value != null)
+                {
+                    readOnly = value;
+                }
+                else
+                {
+                    readOnly = false;
+                }
+
+                OnPropertyChanged();
+            }
+        }
+
+
         public FormTextBox()
         {
+            DataContext = this;
             InitializeComponent();
         }
 
@@ -67,6 +99,11 @@ namespace BookShopApplication.Views.UserControls
             {
                 txbPlaceholder.Visibility = Visibility.Visible;
             }
+        }
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -228,6 +228,6 @@
 
         <Label Name="lbl" Grid.Row="0" FontSize="13" Content="{Binding LabelText}" Padding="0" FontFamily="Shabnam" FontWeight="Bold" VerticalAlignment="Top" />
         <TextBlock Name="txbPlaceholder" Grid.Row="1" Text="{Binding LabelText}" FontSize="14" FontFamily="Shabnam" VerticalAlignment="Center" Padding="10,0,7,0" Foreground="#d5d5d5" />
-        <ComboBox Name="cmb" Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Data}" SelectedIndex="0" BorderThickness="2" Cursor="Hand" IsSynchronizedWithCurrentItem="False" DisplayMemberPath="Name" SelectedValuePath="Id" VerticalContentAlignment="Center" IsReadOnly="True" />
+        <ComboBox Name="cmb" Grid.Row="1" ItemsSource="{Binding Items}" SelectedValue="{Binding Data}" BorderThickness="2" Cursor="Hand" IsSynchronizedWithCurrentItem="False" DisplayMemberPath="Name" SelectedValuePath="Id" VerticalContentAlignment="Center" IsReadOnly="True" />
     </Grid>
 </UserControl>
